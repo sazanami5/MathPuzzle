@@ -1,2 +1,2 @@
 # MathPuzzle
-The answers of the quiz book "Math Puzzle" by using Python
+Answers of the quiz book "[Math Puzzle](https://www.shoeisha.co.jp/book/detail/9784798142456)" using Python
