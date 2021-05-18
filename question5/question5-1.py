@@ -1,31 +1,28 @@
+
+
+#再帰での書き方がわかりません助けてください
+# Question
+# N円札を[coin,..]で両替する時何通りあるか。コインの合計の枚数の最大値はN
 import math
 
 def getMaxCoin(coinPrice:int,changePrice:int, maxCoinsSum:int):
-    maxCoin =  math.floor(changePrice/coinPrice) if math.floor(changePrice/coinPrice)>=maxCoinsSum else maxCoinsSum
+    maxCoin =  math.floor(changePrice/coinPrice) if math.floor(changePrice/coinPrice)<=maxCoinsSum else maxCoinsSum
     return maxCoin
 
+
+count = 0
+times = 0
 def exchangePatternCount(exchangeMoney, coins:list, maxCoinsSum:int):
     maxCoins = [getMaxCoin(coin,exchangeMoney,maxCoinsSum) for coin in coins]
-times=-1
-count=0
-sum = 0
-def getCount(maxCoins,coins,exchangeMoney):
-    if times==0:
+    coin = coins.pop(0)
+    times+=1
+    if len(coins)==0:
+        count +=1 
         return count
-    
-    if times>0:
+    else:
+        for i in range(maxCoins[times]+1):
+            times+=1
+            exchangePatternCount(exchangeMoney-coin*i,coins,maxCoinsSum)
 
-    
 
-
-print(exchangePatternCount(1000,[10,50,100,500],15))
-
-# def getCount(maxCoins,coins,exchangeMoney):
-#     if times<len(maxCoins):
-#         return count
-#     for i in range(len(maxCoins)):
-#         sum+=maxCoins[i]*coins[i]
-        
-#         if sum==exchangeMoney:
-#             count+=1
-
+exchangePatternCount(1000, [500,100,50,10], 15)
