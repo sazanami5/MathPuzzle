@@ -3,9 +3,10 @@
 同じ場所を掃除しないように動く時、12回移動する移動経路は何パターンあるか
 線対称、点対称のパターンは別のものとしてカウントする。
 '''
+
 N = 12
 
-def move(moveLog)->int:
+def move(moveLog: list)->int:
     #最初の位置を含んでN+1個調べれば終了
     if len(moveLog) == N + 1:
         return 1
